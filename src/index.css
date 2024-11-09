@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #5c6ac4;
+  --background-color: #f8f9fd;
+  --card-background: #ffffff;
+  --text-color: #2c3e50;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--background-color) 0%, #e6e9f0 100%);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.container {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  animation: slideIn 0.5s ease-out;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color var(--transition-speed);
+}
+
+label:hover {
+  color: var(--primary-color);
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e1e5ee;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all var(--transition-speed);
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+input[readonly] {
+  background-color: #f8f9fa;
+  border-color: #e9ecef;
+  color: #495057;
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+button {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+#calc {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+#calc:hover {
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+#init {
+  background-color: #f8f9fa;
+  color: var(--text-color);
+  border: 2px solid #e1e5ee;
+}
+
+#init:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+input:invalid + .error-message {
+  display: block;
+}
+
+*:focus {
+  outline: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
+.cart {
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #2e7d32;
+}
+
+li::before {
+  content: '🛒'; /* Icon for each product */
+  margin-right: 10px;
+}
+
+div ul li:last-child {
+  margin-bottom: 0;
+}
+
+div ul li:hover {
+  background-color: #c8e6c9;
+}
+
+div p {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
+  color: #2e7d32;
+}
